@@ -6,9 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Connexion {
-	
+	/* classe permettant la connexion  */			
 	private String url;
 	private Statement statement;
+
 
 	public Connexion() {
 		try {

@@ -10,10 +10,10 @@ import java.util.List;
 import modele.Client;
 import modele.Location;
 
-public class gererLocation {
+public class GererClient {
 	private Statement statement;
 
-	public gererLocation(Connexion connexion) {
+	public GererClient(Connexion connexion) {
 		this.statement = connexion.getStatement();
 	}
 
@@ -22,8 +22,6 @@ public class gererLocation {
 	
 		List<Location> listlocation = new ArrayList<Location>();
 		try {
-//		int i = statement.executeUpdate("insert into client values('1','12345','15')");
-//		System.out.println("aarrarara : "+i);
 			ResultSet resulat = statement.executeQuery(requete);
 			while(resulat.next()){
 				Location location = new Location();
@@ -52,5 +50,7 @@ public class gererLocation {
 		return null;
 
 	}
+	
+	
 
 }
