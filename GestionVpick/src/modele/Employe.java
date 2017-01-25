@@ -48,6 +48,10 @@ public class Employe {
 	public void setTypeEmploye(TypeEmploye typeEmploye) {
 		this.typeEmploye = typeEmploye;
 	}
+	public void setIdRoutine(Integer idRoutine) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	
 	
