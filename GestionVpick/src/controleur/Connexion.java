@@ -22,7 +22,7 @@ public class Connexion {
 		try {
 			
 			// @//machineName:port/SID,   userid,  password
-			url = "jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:m1miage";
+			//url = "jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:m1miage";
 			Connection connection = DriverManager.getConnection(url,"robinsoc","drUJE7xz");
 			statement = connection.createStatement();
 			
