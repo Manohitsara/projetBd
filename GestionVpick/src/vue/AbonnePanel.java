@@ -3,6 +3,9 @@ package vue;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import controleur.Connexion;
+import controleur.GererClient;
+
 public class AbonnePanel extends JPanel {
 
 	/**
@@ -13,11 +16,14 @@ public class AbonnePanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public AbonnePanel() {
+	public AbonnePanel(Connexion connexion) {
+		GererClient gererClient = new GererClient(connexion);
+		gererClient.gererStation();
 		setLayout(null);
+		this.setBounds(100, 100, 692, 425);
 		
 		JTabbedPane onglets = new JTabbedPane(JTabbedPane.TOP);
-		onglets.setBounds(0, 0, 450, 300);
+		onglets.setBounds(0, 11, 692, 425);
 		add(onglets);
 		LocationPanel locationPanel = new LocationPanel();
 		ReservationPanel reservationPanel = new ReservationPanel();

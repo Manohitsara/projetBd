@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
+import java.awt.BorderLayout;
 
 public class Principale extends JFrame{
 	private JTextField txtLogin;
@@ -35,15 +36,16 @@ public class Principale extends JFrame{
 	private String type;
 	private GererAuthentification gestionAuthentification ;
 	private JPanel panelPrincipal;
-	
+	private Connexion connexion;
 	
 
 	/**
 	 * Create the application.
 	 */
-	public Principale(Connexion connexion) {
+	public Principale(Connexion connex) {
 		initialize();
 		type = "A";
+		this.connexion = connex;
 		gestionAuthentification = new GererAuthentification(connexion);
 	}
 
@@ -53,13 +55,13 @@ public class Principale extends JFrame{
 	private void initialize() {
 		this.setTitle("Gestion Vpick");
 
-		this.setBounds(100, 100, 531, 354);
+		this.setBounds(100, 100, 692, 425);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panelPrincipal = new JPanel();
 		panelPrincipal.setBackground(Color.WHITE);
 		
 		
-		getContentPane().add(panelPrincipal);
+		getContentPane().add(panelPrincipal, BorderLayout.SOUTH);
 		
 		JLabel label = new JLabel("Bienvenue sur l'application VPICK: Location de vélo.");
 		label.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
@@ -114,68 +116,71 @@ public class Principale extends JFrame{
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(69)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 346, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(100, Short.MAX_VALUE))
-				.addComponent(separator, GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(18)
-					.addComponent(lblSeConnecter, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(123)
 					.addComponent(lblError, GroupLayout.PREFERRED_SIZE, 384, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(169, Short.MAX_VALUE))
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblSabonner, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(390, Short.MAX_VALUE))
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(37)
-					.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnAbonnement)
-					.addPreferredGap(ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-					.addComponent(lblLocationPourNon)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnLocation)
-					.addGap(29))
-				.addGroup(gl_panel.createSequentialGroup()
-					.addComponent(separator_1, GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
-					.addContainerGap())
-				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(115, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(38)
-							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(lblLogin, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblMdp, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(txtMdp, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(lblLogin, GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED))
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(120)
+							.addComponent(lblMdp)
+							.addGap(46)))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtMdp, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+								.addComponent(btnConnexion)
 								.addGroup(gl_panel.createSequentialGroup()
 									.addComponent(rdbtnAbonne)
-									.addGap(18)
-									.addComponent(rdbtnConducteur))
-								.addComponent(btnConnexion))
-							.addGap(18)
-							.addComponent(rdbtnSuperviseur)))
-					.addContainerGap(134, Short.MAX_VALUE))
+									.addGap(2)
+									.addComponent(rdbtnConducteur)))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(rdbtnSuperviseur, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)))
+					.addGap(197))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(169)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 346, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(161, Short.MAX_VALUE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(105)
+					.addComponent(lblSeConnecter, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(472, Short.MAX_VALUE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(44)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblSabonner, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+							.addGap(38)
+							.addComponent(btnAbonnement)
+							.addGap(81)
+							.addComponent(lblLocationPourNon)
+							.addGap(45)
+							.addComponent(btnLocation)))
+					.addContainerGap(116, Short.MAX_VALUE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(separator_1, GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
+					.addContainerGap())
+				.addComponent(separator, GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(11)
+					.addContainerGap()
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(17)
+					.addComponent(lblError)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblSeConnecter, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblError))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(lblSeConnecter, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblLogin)
 						.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -185,22 +190,22 @@ public class Principale extends JFrame{
 						.addComponent(txtMdp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(rdbtnConducteur)
 						.addComponent(rdbtnAbonne)
+						.addComponent(rdbtnConducteur)
 						.addComponent(rdbtnSuperviseur))
-					.addGap(7)
+					.addGap(18)
 					.addComponent(btnConnexion)
-					.addGap(7)
+					.addGap(18)
 					.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(18)
 					.addComponent(lblSabonner)
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnAbonnement)
-						.addComponent(lblNewLabel_2)
+						.addComponent(lblLocationPourNon, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnLocation)
-						.addComponent(lblLocationPourNon, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(27, Short.MAX_VALUE))
+						.addComponent(btnAbonnement)
+						.addComponent(lblNewLabel_2))
+					.addContainerGap(97, Short.MAX_VALUE))
 		);
 		panelPrincipal.setLayout(gl_panel);
 		
@@ -209,6 +214,7 @@ public class Principale extends JFrame{
 //		Border border = BorderFactory.createTitledBorder("Se connecter");
 //		panel.setBorder(border);
 		setVisible(true);
+		setResizable(false);
 	}
 	
 	private void appelListeners() {
@@ -224,9 +230,10 @@ public class Principale extends JFrame{
 						} else if(type.equals("C")) {
 							
 						} else if(type.equals("A")){
-							remove(panelPrincipal);
-							AbonnePanel abonnePanel = new AbonnePanel();
-							add(abonnePanel);
+							AbonnePanel abonnePanel = new AbonnePanel(connexion);
+							setContentPane(abonnePanel);
+							repaint();
+							revalidate();
 						}
 					} else {
 						lblError.setText("Erreur d'authentification!");

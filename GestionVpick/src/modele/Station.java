@@ -14,7 +14,7 @@ public class Station {
 	private Integer hDebVP;
 	private Integer hFinVP;
 	
-	private List<Bornette> listOrdre = new ArrayList<Bornette>();
+	private List<Bornette> listBornette = new ArrayList<Bornette>();
 	
 	public Integer getIdStation() {
 		return idStation;
@@ -72,11 +72,11 @@ public class Station {
 	}
 	
 	public List<Bornette> getListOrdre() {
-		return listOrdre;
+		return listBornette;
 	}
 	
-	public void setListOrdre(List<Bornette> listOrdre) {
-		this.listOrdre = listOrdre;
+	public void setListBornette(List<Bornette> listBornette) {
+		this.listBornette = listBornette;
 	}
 	
 	

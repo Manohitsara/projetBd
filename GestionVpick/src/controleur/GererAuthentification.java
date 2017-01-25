@@ -15,7 +15,7 @@ public class GererAuthentification {
 	
 	public boolean gererConnexion(String mdp, String login, String type){
 		if(type.equals("A")) {
-			String requete = "Select * from Client where lower(login_abonne) = lower(\'"+login+"\') and mpd =\'"+mdp+"\'";
+			String requete = "Select * from Client where lower(login_abonne) = lower(\'"+login+"\') and mdp =\'"+mdp+"\'";
 			
 			try {
 				ResultSet resultat = statement.executeQuery(requete);
