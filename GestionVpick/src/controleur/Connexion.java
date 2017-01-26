@@ -9,6 +9,7 @@ public class Connexion {
 	/* classe permettant la connexion  */			
 	private String url;
 	private Statement statement;
+	private Connection connection ;
 
 
 	public Connexion() {
@@ -23,7 +24,7 @@ public class Connexion {
 			
 			// @//machineName:port/SID,   userid,  password
 			url = "jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:m1miage";
-			Connection connection = DriverManager.getConnection(url,"robinsoc","drUJE7xz");
+			connection = DriverManager.getConnection(url,"robinsoc","drUJE7xz");
 			statement = connection.createStatement();
 			
 		} catch (SQLException e) {
@@ -36,5 +37,11 @@ public class Connexion {
 	public Statement getStatement() {
 		return statement;
 	}
+
+
+	public Connection getConnection() throws SQLException {
+		return  connection;
+	}
+	
 
 }

@@ -1,5 +1,7 @@
 package vue;
 
+import java.sql.SQLException;
+
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -15,8 +17,9 @@ public class AbonnePanel extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @throws SQLException 
 	 */
-	public AbonnePanel(Connexion connexion) {
+	public AbonnePanel(Connexion connexion, int idConnecte) throws SQLException {
 		GererClient gererClient = new GererClient(connexion);
 		gererClient.gererStation();
 		setLayout(null);
@@ -26,7 +29,7 @@ public class AbonnePanel extends JPanel {
 		onglets.setBounds(0, 11, 692, 425);
 		add(onglets);
 		LocationPanel locationPanel = new LocationPanel();
-		ReservationPanel reservationPanel = new ReservationPanel();
+		ReservationPanel reservationPanel = new ReservationPanel(connexion,idConnecte);
 		
 		onglets.addTab("Location", locationPanel);
 		onglets.addTab("Réservation", reservationPanel);

@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import java.awt.BorderLayout;
@@ -224,16 +225,24 @@ public class Principale extends JFrame{
 				if(txtLogin.getText().isEmpty() || txtMdp.getText().isEmpty()) {
 					lblError.setText("Login et mot de passe obligatoire!");
 				} else {
-					if(gestionAuthentification.gererConnexion(txtMdp.getText(), txtLogin.getText(), type)) {
+					if(gestionAuthentification.gererConnexion(txtMdp.getText(), txtLogin.getText(), type) != -1) {
+						int idConnecte = gestionAuthentification.gererConnexion(txtMdp.getText(), txtLogin.getText(), type);
 						if(type.equals("S")) {
 							
 						} else if(type.equals("C")) {
 							
 						} else if(type.equals("A")){
-							AbonnePanel abonnePanel = new AbonnePanel(connexion);
-							setContentPane(abonnePanel);
-							repaint();
-							revalidate();
+							AbonnePanel abonnePanel;
+							try {
+								abonnePanel = new AbonnePanel(connexion, idConnecte );
+								setContentPane(abonnePanel);
+								repaint();
+								revalidate();
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+
 						}
 					} else {
 						lblError.setText("Erreur d'authentification!");
