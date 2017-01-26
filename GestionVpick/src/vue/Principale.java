@@ -90,6 +90,15 @@ public class Principale extends JFrame{
 		JLabel lblNewLabel_2 = new JLabel("s'abonner");
 		
 		btnAbonnement = new JButton("Abonnement");
+		btnAbonnement.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NouvelAbonnementPanel nap = new NouvelAbonnementPanel(connexion);
+				setContentPane(nap);
+				repaint();
+				revalidate();
+				
+			}
+		});
 		
 		JLabel lblLocationPourNon = new JLabel("Location pour non abonn\u00E9");
 		

@@ -26,6 +26,8 @@ public class GererReservation {
 
 	public boolean insertResa( int idResa, String dateDeb, String hDeb, String dateFin, String hFin,
 			String modele, String station, int idClient) {
+			
+	
 		boolean res = true;
 		String requete = "Select id_station from Station where lower(nom_station) = lower(\'" + station + "\') ";
 		String requeteModele = "Select id_modele from Modele_velo where lower(nom_modele) = lower(\'" + modele + "\')";
@@ -33,6 +35,7 @@ public class GererReservation {
 		int idStation = -1;
 
 		try {
+			conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 			ResultSet resultat = statement.executeQuery(requete);
 			if (resultat.next()) {
 				idStation = resultat.getInt(1);
@@ -60,15 +63,23 @@ public class GererReservation {
 			ps.setInt(6, idClient);
 			ps.executeUpdate();
 
+			conn.commit();
+			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			if (ps != null)
 				ps.close();
 			if (resultat != null)
 				resultat.close();
-
+	
 		} catch (SQLException e) {
 			System.out.println(e);
-			new JOptionPane("Station inexistante ", JOptionPane.ERROR_MESSAGE);
+			new JOptionPane("Erreur sur la base", JOptionPane.ERROR_MESSAGE);
 			res = false;
+		}
+		try {
+			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return res;
 	}
