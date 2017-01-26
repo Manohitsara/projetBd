@@ -75,7 +75,7 @@ public class GererReservation {
 	//  consultation des reservation pour uen date donnée
 	public boolean consulterReservation(int idClient) {
 		boolean res = false ;
-		String req = " Select to_char(date_deb,'DD/MM/YYYY HH24'), to_char(date_fin,'DD/MM/YYYY HH24'), nom_modele, nom_station  from Reservation natural Modele_velo natural join Station  where id_client = ? " ;
+		String req = " Select to_char(date_deb,'DD/MM/YYYY HH24'), to_char(date_fin,'DD/MM/YYYY HH24'), nom_modele, nom_station FROM Reservation NATURAL JOIN Modele_velo NATURAL JOIN  Station  where id_client = ? " ;
 		try {
 			PreparedStatement ps = conn.prepareStatement(req);
 			ps.setInt(1, idClient);
